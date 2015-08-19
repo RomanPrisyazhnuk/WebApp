@@ -1,12 +1,113 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <html>
 <head>
 
     <title>JavaContactService</title>
+    <style type="text/css">
 
+        #wrap{
+            display: none;
+            opacity: 0.8;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            padding: 16px;
+            background-color: rgba(1, 1, 1, 0.725);
+            z-index: 100;
+            overflow: auto;
+        }
+        #wrap2{
+            display: none;
+            opacity: 0.8;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            padding: 16px;
+            background-color: rgba(1, 1, 1, 0.725);
+            z-index: 100;
+            overflow: auto;
+        }
+        #wrap3{
+            display: none;
+            opacity: 0.8;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            padding: 16px;
+            background-color: rgba(1, 1, 1, 0.725);
+            z-index: 100;
+            overflow: auto;
+        }
+
+        #window{
+              width: 400px;
+              height: 400px;
+              margin: 50px auto;
+              display: none;
+              background: #fff;
+              z-index: 200;
+              position: fixed;
+              left: 0;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              padding: 16px;
+          }
+        #window2{
+            width: 400px;
+            height: 400px;
+            margin: 50px auto;
+            display: none;
+            background: #fff;
+            z-index: 200;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            padding: 16px;
+        }
+        #window3{
+            width: 400px;
+            height: 400px;
+            margin: 50px auto;
+            display: none;
+            background: #fff;
+            z-index: 200;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            padding: 16px;
+
+        .close {
+            margin-left: 364px;
+            margin-top: 4px;
+            cursor: pointer;
+        }
+        .close1{
+              margin-left: 364px;
+              margin-top: 4px;
+              cursor: pointer;
+          }
+        .close2{
+            margin-left: 364px;
+            margin-top: 4px;
+            cursor: pointer;
+        }
+
+    </style>
     <script type="text/javascript">
         var santaBase = '';
         var clientSideRender = true;
@@ -1088,55 +1189,6 @@
                 color: #555555;
             }
 
-            .loginDialog[data-state~="mobile"] {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                z-index: 99;
-                font-family: Arial, sans-serif;
-                font-size: 1em;
-                color: #9C9C9C;
-                top: 0;
-            }
-
-            .loginDialog[data-state~="mobile"] .loginDialogheader {
-                padding-bottom: 10px;
-                line-height: 30px;
-            }
-
-            .loginDialog[data-state~="mobile"] .loginDialogfavIcon {
-                display: none;
-            }
-
-            .loginDialog[data-state~="mobile"] .loginDialogtitle {
-                font-size: 14px;
-            }
-
-            .loginDialog[data-state~="mobile"] .loginDialogdialog {
-                width: 260px;
-                padding: 10px;
-                position: absolute;
-            }
-
-            .loginDialog[data-state~="mobile"] .loginDialog_footer {
-                margin-top: 0;
-                padding-bottom: 10px;
-            }
-
-            .loginDialog[data-state~="mobile"] .loginDialogcancel {
-                font-size: 14px;
-                line-height: 30px;
-            }
-
-            .loginDialog[data-state~="mobile"] .loginDialog_wrapper {
-                padding: 14px 12px 0 12px;
-            }
-
-            .loginDialog[data-state~="mobile"] .loginDialogsubmitButton {
-                height: 30px;
-                width: 100px;
-                font-size: 14px;
-            }
 
             .loginDialog_forgot {
                 text-align: left;
@@ -1442,7 +1494,7 @@
                                          style="position: absolute; top: 274px; height: 60px; width: 200px; left: 365px; min-height: 36px;"
                                          class="s8" data-state="desktop"
                                          data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$StBttn4">
-                                        <a href="file:contactInfo.jsp"
+                                        <a href="contactInfo.jsp"
                                            target="_blank" style="text-align:center;" id="StBttn4link" class="s8link"
                                            data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$StBttn4.0"><span
                                                 id="StBttn4label" class="s8label"
@@ -1454,9 +1506,9 @@
                                          data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$StBttn3">
                                         <a style="text-align:center;" id="StBttn3link" class="s8link"
                                            data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$StBttn3.0"><span
-                                                id="StBttn3label" class="s8label"
+                                                id="StBttn3label" class="s8label" onclick="show2('block')"
                                                 data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$StBttn3.0.0"
-                                                style="line-height: 60px;">AddFriendship</span></a></div>
+                                                style="line-height: 60px;">ContactList</span></a></div>
                                     <div style="position: absolute; top: 633px; height: 12px; width: 13px; left: 838px;"
                                          id="i0nxsbml" class="i0nxsbml_i0nxsbml"
                                          data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$i0nxsbml">
@@ -1496,17 +1548,18 @@
                                          class="s8" data-state="desktop"
                                          data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$comp-idg11n8s">
                                         <a style="text-align:center;" id="comp-idg11n8slink" class="s8link"
-                                           data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$comp-idg11n8s.0"><span
-                                                id="comp-idg11n8slabel" class="s8label"
+                                           data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$comp-idg11n8s.0">
+                                            <span id="comp-idg11n8slabel" class="s8label"  onclick="show('block')"
                                                 data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$comp-idg11n8s.0.0"
-                                                style="line-height: 60px;">AddContact</span></a></div>
+                                                style="line-height: 60px;">CreateContact</span></a></div>
+
                                     <div id="comp-idg11x1d" data-align="center" data-margin="0"
                                          style="position: absolute; top: 141px; height: 60px; width: 358px; left: 489px; min-height: 36px;"
                                          class="s8" data-state="desktop"
                                          data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$comp-idg11x1d">
                                         <a style="text-align:center;" id="comp-idg11x1dlink" class="s8link"
-                                           data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$comp-idg11x1d.0"><span
-                                                id="comp-idg11x1dlabel" class="s8label"
+                                           data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$comp-idg11x1d.0">
+                                            <span id="comp-idg11x1dlabel" class="s8label" onclick="show1('block')"
                                                 data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$comp-idg11x1d.0.0"
                                                 style="line-height: 60px;">DeleteContact</span></a></div>
                                     <div id="comp-idg14cf8" data-align="center" data-margin="0"
@@ -1517,7 +1570,7 @@
                                            data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$comp-idg14cf8.0"><span
                                                 id="comp-idg14cf8label" class="s8label"
                                                 data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$comp-idg14cf8.0.0"
-                                                style="line-height: 60px;">RemoveFriendship</span></a></div>
+                                                style="line-height: 60px;">HobbyList</span></a></div>
                                     <div id="comp-idg14eor" data-align="center" data-margin="0"
                                          style="position: absolute; top: 388px; height: 60px; width: 200px; left: 365px; min-height: 36px;"
                                          class="s8" data-state="desktop"
@@ -1536,11 +1589,110 @@
                                                 id="comp-idg14hh5label" class="s8label"
                                                 data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$mainPage.1.$comp-idg14hh5.0.0"
                                                 style="line-height: 60px;">Remove place</span></a></div>
-                                    <ul>
-                                        <li><a href="contactInfo.jsp" target="_blank">aaaaaaaaaaaaaaaa</a>
-                                        </li>
-                                    </ul>
+                                    <script type="text/javascript">
+
+                                        //Функция показа
+                                        function show(state){
+
+                                            document.getElementById('window').style.display = state;
+                                            document.getElementById('wrap').style.display = state;
+                                        }
+
+                                    </script>
+                                    <script type="text/javascript">
+                                    function show1(state1){
+
+                                    document.getElementById('window2').style.display = state1;
+                                    document.getElementById('wrap2').style.display = state1;
+                                    }  </script>
+                                    <script type="text/javascript">
+                                        function show2(state2){
+
+                                            document.getElementById('window3').style.display = state2;
+                                            document.getElementById('wrap3').style.display = state2;
+                                        }  </script>
+                                    <div id="window" style="display: none;">
+
+
+                                        <!-- Картинка крестика-->
+                                        <img class="close" onclick="show('none')" src="http://sergey-oganesyan.ru/wp-content/uploads/2014/01/close.png">
+
+                                        <!-- табличка-->
+                                        <fieldset>
+                                            <legend>Creation form</legend>
+                                            <form:form action ="addContact" method="post">
+                                                <table>
+                                                    <tr>
+                                                        <td><p>Enter first name</p></td>
+                                                        <td><input type="text" name="firstName"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><p>Enter last name</p></td>
+                                                        <td><input type="text" name="lastName"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><p>Enter birth date like (1989-12-25)</p></td>
+                                                        <td><input type="text" name="birthdate"/></td>
+                                                    </tr>
+                                                    <tr><td colspan="2"><input type="submit" value="Create Contact"/></td></tr>
+                                                </table>
+                                            </form:form>
+                                        </fieldset>
+                                    </div>
+                                    <div id="window2" style="display: none;">
+
+                                        <!-- Картинка крестика-->
+                                        <img class="close1" onclick="show1('none')" src="http://sergey-oganesyan.ru/wp-content/uploads/2014/01/close.png">
+
+                                        <!-- табличка-->
+                                        <fieldset>
+                                            <legend>Remove form</legend>
+                                            <form:form action ="deleteContact" method="post">
+                                                <table>
+                                                    <tr>
+                                                        <td><p>Enter contact ID</p></td>
+                                                        <td><input type="text" name="id"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><input type="submit" value="Delete Contact"/></td>
+                                                    </tr>
+                                                </table>
+                                            </form:form>
+                                        </fieldset>
+                                        </div>
+                                    <div id="window3" style="display: none;">
+
+                                        <!-- Картинка крестика-->
+                                        <img class="close2" onclick="show2('none')" src="http://sergey-oganesyan.ru/wp-content/uploads/2014/01/close.png">
+
+                                        <!-- табличка-->
+                                        <fieldset>
+                                            <legend>ContactList</legend>
+
+                                            <c:if test = "${!empty contact}">
+                                                <table border="1">
+                                                    <tr>
+                                                        <th>id</th>
+                                                        <th>FirstName</th>
+                                                        <th>LastName</th>
+                                                        <th>BirthDate</th>
+
+                                                    </tr>
+                                                    <c:forEach items = "${contact}" var = "contact">
+                                                        <tr>
+                                                            <td>${contact.id}</td>
+                                                            <td>${contact.firstName}</td>
+                                                            <td>${contact.lastName}</td>
+                                                            <td>${contact.birthDate}</td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </table>
+                                            </c:if>
+
+                                        </fieldset>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -1551,6 +1703,14 @@
     <div data-reactid=".0.$siteAspectsContainer"></div>
 </div>
 </div>
+
+
+
+
+
+
+
+
 </body>
 
 </html>

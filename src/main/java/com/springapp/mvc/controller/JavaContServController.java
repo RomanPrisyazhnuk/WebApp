@@ -37,24 +37,24 @@ public class JavaContServController {
     public String getContacts(Model model) {
 
         List<Contact> contact = this.contactDao.listAll();
-
-
         model.addAttribute("contact", contact);
         return "index";
     }
     @RequestMapping(value = "addContact", method = RequestMethod.POST)
     public String addContact(HttpServletRequest request,ModelMap model) {
-        System.out.println(request.getParameter("firstName"));
-        System.out.println(request.getParameter("lastName"));
-        System.out.println(request.getParameter("birthday"));
         Contact contactFromHTML = new Contact();
         contactFromHTML.setFirstName(request.getParameter("firstName"));
         contactFromHTML.setLastName(request.getParameter("lastName"));
-        contactFromHTML.setBirthDate(LocalDate.parse(request.getParameter("birthday")));
+        contactFromHTML.setBirthDate(LocalDate.parse(request.getParameter("birthdate")));
         this.contactDao.addContact(contactFromHTML);
         List<Contact> contact = this.contactDao.listAll();
 
         model.addAttribute("contact", contact);
         return "index";
     }
-}
+    @RequestMapping(value = "deleteContact", method = RequestMethod.POST)
+    public String deleteContact(HttpServletRequest request,ModelMap model) {
+        this.contactDao.removeContact(request.getParameter("id"));
+        List<Contact> contact = this.contactDao.listAll();
+        model.addAttribute("contact", contact);
+        return "index";}}
